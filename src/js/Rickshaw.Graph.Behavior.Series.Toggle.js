@@ -78,11 +78,10 @@ Rickshaw.Graph.Behavior.Series.Toggle = function(args) {
 	};
 
 	if (this.legend) {
+		
+		if (typeof jQuery !== 'undefined' && jQuery(this.legend.list).sortable) {
 
-		var $ = jQuery;
-		if (typeof $ != 'undefined' && $(this.legend.list).sortable) {
-
-			$(this.legend.list).sortable( {
+			jQuery(this.legend.list).sortable( {
 				start: function(event, ui) {
 					ui.item.bind('no.onclick',
 						function(event) {
