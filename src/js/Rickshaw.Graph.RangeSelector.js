@@ -29,8 +29,10 @@ Rickshaw.Graph.RangeSelector = Rickshaw.Class.create({
             parent = this.parent,
             tDomain = this.tDomain;
 
+        selectionBox.style.background = self.background!=''?self.background:null;
+        selectionBox.style.position = 'absolute';
         selectionBox.setAttribute('class', 'rickshaw_range_selector');
-        graph.element.appendChild(selectionBox);
+        graph.element.insertBefore(selectionBox, graph.element.firstChild);
 
         if (start !== undefined && start !== '') {
             position.xMin = start;
@@ -62,8 +64,6 @@ Rickshaw.Graph.RangeSelector = Rickshaw.Class.create({
                     position.minX = Math.min(position.x, startPointX);
                     position.maxX = position.minX + position.deltaX;
 
-                    selectionBox.style.background = self.background;
-                    selectionBox.style.position = 'absolute';
                     selectionBox.style.transition = 'none';
                     selectionBox.style.opacity = '1';
                     selectionBox.style.width = position.deltaX;
